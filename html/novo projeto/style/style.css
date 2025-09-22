@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: black;
+    color: #f6f6f6;
+}
+.cabecalho{
+    padding: 1% 15%;
+}
+
+.apresentacao{
+    padding: 1% 15%;
+}
+
+.apresentacao__conteudo{
+    display: flex;
+    flex-direction: column;
+}
+
+.rodape{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
