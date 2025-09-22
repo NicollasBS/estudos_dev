@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mim</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body  data-theme="dark">
+    <header class="cabecalho">
+            <nav class="cabecalho__menu">
+                <a class="cabecalho__menu__link" href="index.html">Home</a>
+                <a class="cabecalho__menu__link" href="about.html">Sobre mim</a>
+                <button id="alterar_tema" class="cabecalho__menu__tema">Alterar Tema</button>
+            </nav>
+        </header>
+        <main class="apresentacao">
+            <section class="apresentacao__conteudo">
+                <h1 class="apresentacao__conteudo__titulo">Sobre mim</h1>
+                <p class="apresentacao__conteudo__paragrafo">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit corrupti consequatur non at ipsum ea, doloremque ex, nostrum nisi cupiditate, modi quod dolor. Sed, illo quaerat. Cumque beatae voluptatem maxime.</p>
+                <p class="apresentacao__conteudo__paragrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laudantium assumenda odit quia suscipit magnam, itaque rerum, maxime quaerat similique omnis alias fugit, animi vitae? Placeat sit facilis provident molestias!/p>
+            </section>
+            <img src="./assets/Imagem.png" alt="">
+        </main>
+        <footer class="rodape">
+            <p>Desenvolvido por Nicollas Schoemberger</p>
+        </footer>
+        <script>
+            const alterar_tema = document.getElementById('alterar_tema');
+            const body = document.body;
+
+            alterar_tema.addEventListener('click', function() {
+                const tema_atual = body.getAttribute('data-theme');
+                if(tema_atual === 'dark'){
+                    body.setAttribute('data-theme', 'light');
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                }
+            });
+        </script>
+</body>
+</html>
