@@ -3,7 +3,7 @@ namespace App\Controller;
 
 use Response;
 
-require_once __DIR__ . '/../Response.php';
+require_once __DIR__ . '/../Core/Response.php';
 
 class TesteController{
 
@@ -32,6 +32,6 @@ class TesteController{
     }
 
     public function destroy(int $id): void{
-        Response::json(['message' => "Deletando {$id}"], 204);
+        Response::json(['message' => "Deletando {$id}"], 200);
     }
 }
