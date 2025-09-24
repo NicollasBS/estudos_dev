@@ -1,14 +1,18 @@
 <?php
 namespace App\Controller;
 
+use Response;
+
+require_once __DIR__ . '/../Response.php';
+
 class TesteController{
 
     public function index(): void{
-        echo 'Lista de Teste';
+        Response::json(['message' => 'Lista de Teste']);
     }
 
     public function show(int $id): void{
-        echo "Dados de {$id}";
+        Response::json(['data' => "Dados de {$id}"]);
     }
 
     public function store(): void{
@@ -17,19 +21,17 @@ class TesteController{
         if($data['nome'] && $data['idade']){
             $nome = $data['nome'];
             $idade = $data['idade'];
-            echo json_encode(['nome' => "$nome feio", 'idade' => "$idade anos."]);
+            Response::json(['nome' => "$nome feio", 'idade' => "$idade anos."], 201);
             return;
         }
-        http_response_code(400);
-        echo json_encode(['error'=>'Dados inválidos']);
+        Response::json(['error'=>'Dados inválidos'], 400);
     }
 
     public function update(int $id): void{
-        echo "Atualizando {$id}";
+        Response::json(['message' => "Atualizando {$id}"]);
     }
 
     public function destroy(int $id): void{
-        echo "Excluindo {$id}";
+        Response::json(['message' => "Deletando {$id}"], 204);
     }
-
 }

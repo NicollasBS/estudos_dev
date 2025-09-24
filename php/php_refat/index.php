@@ -4,6 +4,11 @@ header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/autoloader.php';
 require_once __DIR__ . '/Router.php';
+require_once __DIR__ . '/Response.php';
+
+set_exception_handler(function($exception) {
+    Response::json(['error' => $exception->getMessage()], 500);
+});
 
 $router = new Router();
 
