@@ -16,15 +16,7 @@ class TesteController{
     }
 
     public function store(): void{
-        $json = file_get_contents('php://input');
-        $data = json_decode($json, true);
-        if($data['nome'] && $data['idade']){
-            $nome = $data['nome'];
-            $idade = $data['idade'];
-            Response::json(['nome' => "$nome feio", 'idade' => "$idade anos."], 201);
-            return;
-        }
-        Response::json(['error'=>'Dados inválidos'], 400);
+        Response::json(['message'=>'Dados atualizados']);
     }
 
     public function update(int $id): void{
@@ -32,6 +24,6 @@ class TesteController{
     }
 
     public function destroy(int $id): void{
-        Response::json(['message' => "Deletando {$id}"], 200);
+        Response::json(null, 204);
     }
 }
