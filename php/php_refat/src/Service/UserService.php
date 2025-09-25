@@ -29,15 +29,17 @@ class UserService{
     }
 
     public function updateUser(UserDto $userDTO): bool {
-        $dados = [
-            'nome' => $userDTO->nome,
-            'idade' => $userDTO->idade,
-        ];
+        $dados = [];
+        if($userDTO->nome !== null){
+            $dados['nome'] = $userDTO->nome;
+        }
+        if($userDTO->idade !== null){
+            $dados['idade'] = $userDTO->idade;
+        }
         return Repository::update(self::TABELA, $userDTO->id, $dados);
     }
 
     public function deleteUser(int $id): bool {
-        // Primeiro, verifica se o usuário existe
         $this->getUserById($id);
         return Repository::delete(self::TABELA, $id);
     }
