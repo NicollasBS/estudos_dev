@@ -1,6 +1,6 @@
 <?php
-
-require_once __DIR__ . '/Response.php';
+namespace App\Core;
+use App\Core\Response;
 
 class Router{
     private $routes = [];
