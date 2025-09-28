@@ -10,7 +10,7 @@ class UserDto {
     public function __construct(?int $id, ?string $nome, ?int $idade){
         $this->id = $id;
         $this->nome = $nome;
-        $this->idade = $idade; // CORRIGIDO: era $this->int
+        $this->idade = $idade;
     }
 
     public static function fromRequest(array $data, ?int $id = null): self{

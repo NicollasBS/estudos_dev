@@ -1,0 +1,73 @@
+[data-theme='dark']{
+    --cor-primaria: rgb(77, 77, 77);
+    --cor-secundaria: #dae1e4;
+    --cor-terciaria: rgb(41, 41, 41);
+    --cor-quarternaria: cadetblue;
+    --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}   
+
+[data-theme='light']{
+    --cor-primaria: rgb(243, 243, 243);
+    --cor-secundaria: #3a3a3a;
+    --cor-terciaria: rgb(134, 134, 134);
+    --cor-quarternaria: rgb(55, 91, 92);
+    --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}   
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: var(--fonte)
+
+}
+
+.container_principal{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+}
+
+.sidebar{
+    width: 25%;
+    height: 100vb;
+    background-color: var(--cor-terciaria);
+    padding: 1% 0% 0% 1%;
+    box-shadow: 10px 0px 30px rgba(0,0,0,0.3);
+}
+
+.sidebar_titulo{
+    color: var(--cor-secundaria);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar_lista{
+    list-style-type: none;
+}
+
+.sidebar_lista_itens{
+    margin-bottom: 15px;
+}
+
+.sidebar_lista_itens_alterar_tema{
+    margin-top: 80px;
+}
+
+.sidebar_lista_itens_link{
+    text-decoration: none;
+    color: var(--cor-quarternaria);
+    font-weight: bold;
+}
+
+.conteudo{
+    padding: 1% 1% 1% 1%;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+}
