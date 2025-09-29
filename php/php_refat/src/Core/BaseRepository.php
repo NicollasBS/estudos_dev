@@ -2,27 +2,35 @@
 namespace App\Core;
 
 use App\Core\Database;
+use PDO;
 
-class Repository {
-    public static function findAll(string $tabela): array{
+class BaseRepository {
+    protected PDO $pdo;
+    protected string $tabela;
+
+    public function __construct(){
+        $this->pdo = Database::getInstance();
+    }
+
+    public function findAll(): array{
         $pdo = Database::getInstance();
-        $stmt = $pdo->query("SELECT * FROM {$tabela}");
+        $stmt = $pdo->query("SELECT * FROM {$this->tabela}");
         return $stmt->fetchAll();
     }
 
-    public static function find(string $tabela, int $id): mixed{
+    public function find(int $id): mixed{
         $pdo = Database::getInstance();
-        $stmt = $pdo->prepare("SELECT * FROM {$tabela} WHERE id = :id");
+        $stmt = $pdo->prepare("SELECT * FROM {$this->tabela} WHERE id = :id");
         $stmt->execute(['id' => $id]);
         return $stmt->fetch();
     }
 
-    public static function insert(string $tabela, array $dados): string{
+    public function insert(array $dados): string{
         $pdo = Database::getInstance();
         $colunas = implode(', ', array_keys($dados));
         $placeholders = ":" . implode(', :', array_keys($dados));
 
-        $sql = "INSERT INTO {$tabela} ($colunas) VALUES ($placeholders)";
+        $sql = "INSERT INTO {$this->tabela} ($colunas) VALUES ($placeholders)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute($dados);
@@ -30,7 +38,7 @@ class Repository {
         return $pdo->lastInsertId();
     }
 
-    public static function update(string $tabela, int $id, array $dados): bool {
+    public function update(int $id, array $dados): bool {
             $pdo = Database::getInstance();
 
             $set = [];
@@ -39,7 +47,7 @@ class Repository {
             }
             $setSql = implode(', ', $set);
 
-            $sql = "UPDATE {$tabela} SET {$setSql} WHERE id = :id";
+            $sql = "UPDATE {$this->tabela} SET {$setSql} WHERE id = :id";
 
             $dados['id'] = $id;
 
@@ -47,9 +55,9 @@ class Repository {
             return $stmt->execute($dados);
         }
 
-    public static function delete(string $tabela, int $id): bool {
+    public function delete(int $id): bool {
             $pdo = Database::getInstance();
-            $stmt = $pdo->prepare("DELETE FROM {$tabela} WHERE id = :id");
+            $stmt = $pdo->prepare("DELETE FROM {$this->tabela} WHERE id = :id");
             return $stmt->execute(['id' => $id]);
         }
 }
